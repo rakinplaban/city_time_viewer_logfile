@@ -1,7 +1,3 @@
-Here’s a matching README for Rosia’s repository:
-
----
-
 # 🦊 Rosia – Mascot Logger for City Time Viewer
 
 **Hello! I’m Rosia!** 📖✨  
