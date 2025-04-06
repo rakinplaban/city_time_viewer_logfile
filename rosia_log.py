@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("GH_TOKEN")
 FRONTEND_REPO = os.getenv("FRONTEND_REPO")  # e.g. "yourusername/city-time-viewer-frontend"
 BACKEND_REPO = os.getenv("BACKEND_REPO")    # e.g. "yourusername/city-time-viewer-backend"
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
