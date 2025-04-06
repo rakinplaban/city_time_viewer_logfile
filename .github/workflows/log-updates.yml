@@ -1,0 +1,36 @@
+name: Rosia’s Mascot Log
+
+on:
+  schedule:
+    - cron: "0 12 * * *"  # Every day at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  log_updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Rosia's repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install requirements
+        run: pip install requests
+
+      - name: Run Rosia’s logger script
+        run: python rosia_log.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          FRONTEND_REPO: yourusername/city-time-viewer-frontend
+          BACKEND_REPO: yourusername/city-time-viewer-backend
+
+      - name: Commit & Push update log
+        run: |
+          git config user.name "Rosia"
+          git config user.email "rosia@bot.com"
+          git add latest_updates.md
+          git commit -m "Rosia update log $(date +'%Y-%m-%d')"
+          git push
